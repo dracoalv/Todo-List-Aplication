@@ -14,6 +14,7 @@ A personal to-do list application, this is an exercise in a JavaScript course by
 - [x] Remove to-dos.
 
 <br>
+
 #
 
 Feel free to contribute!
