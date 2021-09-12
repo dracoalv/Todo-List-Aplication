@@ -2,7 +2,7 @@
 <br>
 <br>
 <h1>What is this?</h1>
-A personal to-do list application, this is an exercise in a JavaScript course by [Roger Melo](https://github.com/Roger-Melo).<br>
+A personal to-do list application, this is an exercise in a JavaScript course by <a href="https://github.com/Roger-Melo">Roger Melo.</a><br>
 
 #
 <br>
