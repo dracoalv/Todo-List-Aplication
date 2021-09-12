@@ -1,14 +1,11 @@
-const formAddTodo = document.querySelector('.form-add-todo')
-const todosContainer = document.querySelector('.todos-container')
 const searchInputTodo = document.querySelector('.form-search input')
+const todosContainer = document.querySelector('.todos-container')
+const formAddTodo = document.querySelector('.form-add-todo')
 
-// add list input
-formAddTodo.addEventListener('submit', event => {
-  event.preventDefault()
+const addTodo = () => {
+  const inputValue = formAddTodo.add.value.trim()
 
-  const inputValue = event.target.add.value.trim()
-  
-  if(inputValue.length) {
+  if (inputValue.length) {
     todosContainer.innerHTML += `
     <li class="list-group-item d-flex justify-content-between align-items-center">
           <span>${inputValue}</span>
@@ -17,31 +14,47 @@ formAddTodo.addEventListener('submit', event => {
     `
   }
 
-  event.target.reset()
-})
+  formAddTodo.reset()
+}
 
-// remove list button
-todosContainer.addEventListener('click', event => {
+const removeTodo = event => {
   const clickedElement = event.target
 
   if (Array.from(clickedElement.classList).includes('delete')) {
     clickedElement.parentElement.remove()
   }
-})
+}
 
-// input search feature
-searchInputTodo.addEventListener('input', event => {
-  const inputValue = event.target.value.trim().toLowerCase()
+const searchTodo = () => {
+  const inputValue = searchInputTodo.value.trim().toLowerCase()
+
   Array.from(todosContainer.children)
     .filter(todo => !todo.textContent.toLowerCase().includes(inputValue))
     .forEach(todo => {
       todo.classList.remove('d-flex')
       todo.classList.add('hidden')
     })
-    Array.from(todosContainer.children)
-    .filter(todo => todo.textContent.toLowerCase().includes(inputValue))
-    .forEach(todo => {
-      todo.classList.remove('hidden')
-      todo.classList.add('d-flex')
-    })
+    
+  Array.from(todosContainer.children)
+  .filter(todo => todo.textContent.toLowerCase().includes(inputValue))
+  .forEach(todo => {
+    todo.classList.remove('hidden')
+    todo.classList.add('d-flex')
+  })
+}
+
+// add list input
+formAddTodo.addEventListener('submit', event => {
+  event.preventDefault()
+  addTodo()
+})
+
+// remove list button ------------------------------------------------------------
+todosContainer.addEventListener('click', event => {
+  removeTodo(event)
+})
+
+// input search feature
+searchInputTodo.addEventListener('input', () => {
+  searchTodo()
 })

@@ -1,21 +1,50 @@
 .container {
   max-width: 400px;
+
+  margin: 4% auto;
+
+  border: 1px solid #c1c1c2;
+  border-radius: 4px;
 }
 
 input[type=text],
 input[type=text]:focus {
-  color: #fff;
+  color: #343a40;
   border: none;
-  background: rgba(0,0,0,0.2);
+  background: #e9e9e9;
   max-width: 400px;
 }
 
+.button-add-todo{
+  width: 100%;
+  max-width: 400px;
+  
+  padding: 8px 0;
+  margin: 8px 0;
+
+  font-weight: 500;
+  letter-spacing: .02em;
+  background: #3C64B1;
+  color: white;
+  
+  border: none;
+  border-radius: 4px;
+}
+
+.button-add-todo:hover{
+  background: #4574ca;
+}
+
 .todos-container li {
-  background: #484E53;
+  background: #EAEEF7;
 }
 
 .delete {
   cursor: pointer;
+}
+
+.delete:hover{
+  color: red;
 }
 
 .hidden{

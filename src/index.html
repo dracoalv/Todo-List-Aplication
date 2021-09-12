@@ -7,36 +7,36 @@
   <link rel="stylesheet" href="./style.css">
   <title>To-do List | CJRM</title>
 </head>
-<body class="bg-dark">
+<body class="bg-white">
   <div class="container">
 
-    <header class="text-center text-light my-4">
+    <header class="text-center text-dark my-4">
       <h1 class="mb-4">To-do List</h1>
       <form class="form-search">
         <input class="form-control m-auto" type="text" name="search" placeholder="Buscar to-do" autocomplete="off" autofocus/>
       </form>
     </header>
 
-    <ul class="todos-container list-group mx-auto text-light">
-      <li class="list-group-item d-flex justify-content-between align-items-center">
-        <span>Assistir Breaking Bad</span>
+    <ul class="todos-container list-group mx-auto text-dark">
+      <li class="list-group-item d-flex justify-content-between align-items-center" data-li="list">
+        <span>Estudar JavaScript</span>
         <i class="far fa-trash-alt delete"></i>
       </li>
 
-      <li class="list-group-item d-flex justify-content-between align-items-center">
-        <span>Planejar aulas</span>
+      <li class="list-group-item d-flex justify-content-between align-items-center" data-li="list">
+        <span>Criar portfólio</span>
         <i class="far fa-trash-alt delete"></i>
       </li>
 
-      <li class="list-group-item d-flex justify-content-between align-items-center">
+      <li class="list-group-item d-flex justify-content-between align-items-center" data-li="list">
         <span>Fazer exercícios físicos</span>
         <i class="far fa-trash-alt delete"></i>
       </li>
     </ul>
 
     <form class="form-add-todo text-center my-4">
-      <label class="text-light">Adicionar to-do</label>
-      <input class="form-control m-auto" type="text" name="add" autocomplete="off"/>
+      <input class="form-control m-auto" type="text" name="add" placeholder="Adicionar to-do" autocomplete="off"/>
+      <button class="button-add-todo">Adicionar</button>
     </form>
   </div>
 
