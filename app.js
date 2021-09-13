@@ -38,10 +38,10 @@ const searchTodos = () => {
     })
     
   Array.from(todosContainer.children)
-  .filter(todo => todo.textContent.toLowerCase().includes(inputValue))
-  .forEach(todo => {
-    todo.classList.remove('hidden')
-    todo.classList.add('d-flex')
+    .filter(todo => todo.textContent.toLowerCase().includes(inputValue))
+    .forEach(todo => {
+      todo.classList.remove('hidden')
+      todo.classList.add('d-flex')
   })
 }
 
