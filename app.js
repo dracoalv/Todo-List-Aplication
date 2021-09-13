@@ -2,7 +2,9 @@ const searchInputTodo = document.querySelector('.form-search input')
 const todosContainer = document.querySelector('.todos-container')
 const formAddTodo = document.querySelector('.form-add-todo')
 
-const addTodo = () => {
+const addTodo = event => {
+  event.preventDefault()
+
   const inputValue = formAddTodo.add.value.trim()
 
   if (inputValue.length) {
@@ -25,7 +27,7 @@ const removeTodo = event => {
   }
 }
 
-const searchTodo = () => {
+const searchTodos = () => {
   const inputValue = searchInputTodo.value.trim().toLowerCase()
 
   Array.from(todosContainer.children)
@@ -43,18 +45,6 @@ const searchTodo = () => {
   })
 }
 
-// add list input
-formAddTodo.addEventListener('submit', event => {
-  event.preventDefault()
-  addTodo()
-})
-
-// remove list button ------------------------------------------------------------
-todosContainer.addEventListener('click', event => {
-  removeTodo(event)
-})
-
-// input search feature
-searchInputTodo.addEventListener('input', () => {
-  searchTodo()
-})
+formAddTodo.addEventListener('submit', addTodo)
+todosContainer.addEventListener('click', removeTodo)
+searchInputTodo.addEventListener('input', searchTodos)
