@@ -39,11 +39,11 @@ input[type=text]:focus {
   background: #EAEEF7;
 }
 
-.delete {
+i[data-trash] {
   cursor: pointer;
 }
 
-.delete:hover{
+i[data-trash]:hover{
   color: red;
 }
 

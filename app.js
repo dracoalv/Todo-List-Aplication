@@ -9,9 +9,9 @@ const addTodo = event => {
 
   if (inputValue.length) {
     todosContainer.innerHTML += `
-    <li class="list-group-item d-flex justify-content-between align-items-center">
+    <li class="list-group-item d-flex justify-content-between align-items-center" data-todo="${inputValue}}">
           <span>${inputValue}</span>
-          <i class="far fa-trash-alt delete"></i>
+          <i class="far fa-trash-alt" data-trash="${inputValue}}"></i>
         </li>
     `
   }
@@ -21,28 +21,43 @@ const addTodo = event => {
 
 const removeTodo = event => {
   const clickedElement = event.target
+  const trashDataValue = clickedElement.dataset.trash
+  const todo = document.querySelector(`[data-todo="${trashDataValue}"]`)
 
-  if (Array.from(clickedElement.classList).includes('delete')) {
-    clickedElement.parentElement.remove()
+  if (trashDataValue) {
+    todo.remove()
   }
+}
+
+const filterTodos = (todos, inputValue, returnMatchedTodos) => todos
+  .filter(todo => {
+    const matchedTodos = todo.textContent.toLowerCase().includes(inputValue)
+    return returnMatchedTodos ? matchedTodos : !matchedTodos
+})
+
+const manipulateClasses = (todos, classToAdd, classToRemove) => {
+  todos.forEach(todo => {
+    todo.classList.remove(classToRemove)
+    todo.classList.add(classToAdd)
+  })
+}
+
+const hideTodos = (todos, inputValue) => {
+  const todosToHide = filterTodos(todos, inputValue, false)
+  manipulateClasses(todosToHide, 'hidden', 'd-flex')
+}
+
+const showTodos = (todos, inputValue) => {
+  const todosToShow = filterTodos(todos, inputValue, true)
+  manipulateClasses(todosToShow, 'd-flex', 'hidden')
 }
 
 const searchTodos = () => {
   const inputValue = searchInputTodo.value.trim().toLowerCase()
+  const todos = Array.from(todosContainer.children)
 
-  Array.from(todosContainer.children)
-    .filter(todo => !todo.textContent.toLowerCase().includes(inputValue))
-    .forEach(todo => {
-      todo.classList.remove('d-flex')
-      todo.classList.add('hidden')
-    })
-    
-  Array.from(todosContainer.children)
-    .filter(todo => todo.textContent.toLowerCase().includes(inputValue))
-    .forEach(todo => {
-      todo.classList.remove('hidden')
-      todo.classList.add('d-flex')
-  })
+  hideTodos(todos, inputValue)    
+  showTodos(todos, inputValue)
 }
 
 formAddTodo.addEventListener('submit', addTodo)
